@@ -21,6 +21,11 @@
   "homepage": "git+https://github.com/snille/MMM-Chart#readme",
   "dependencies": {
     "chart.js": "latest",
-	"chartjs-plugin-zoom": "latest"
+    "chartjs-adapter-luxon": "^1.1.0",
+    "chartjs-adapter-moment": "^1.0.0",
+    "chartjs-plugin-zoom": "latest",
+    "luxon": "^3.0.1",
+    "moment": "^2.29.4",
+    "node-fetch": "^3.2.6"
   }
 }
