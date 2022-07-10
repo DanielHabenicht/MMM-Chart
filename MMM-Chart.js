@@ -74,22 +74,9 @@ Module.register("MMM-Chart",{
           notification === "GRAPH_DATA_RESULT" &&
           payload.identifier === this.identifier
         ) {
-				// Show it all!
-				Log.info('Parsed payload: ');
-	
 				// Parsing the JSON data to an array.
-				// data = this.config.dataTransformer(payload.data);
-				data = payload.data;
-                var newData = Object.keys(data).filter(date => date != 'combinations' && date != 'id').map(datapoint => {
-                    return {x: Math.floor(Number(datapoint)), y: data[datapoint].data?.barometer || undefined}
-                }).filter(datapoint => datapoint.y != undefined)
-				Log.info(newData);
+				var newData = this.config.dataTransformer(payload.data);
                 var labels = newData.map(date => date.x);
-                newData.forEach(data => {
-                    if(data == null){
-                        console.log("hi")
-                    }
-                })
 
 				// Update the graphs.
 				if(this.myChart !== 'undefined') {
@@ -114,7 +101,6 @@ Module.register("MMM-Chart",{
 
         // Init chart.js
         this.myChart = new Chart(chartEl.getContext("2d"), this.config.chartConfig);
-		// this.updateChartData();
 		
         // Set the size
         chartEl.width  = this.config.width;
